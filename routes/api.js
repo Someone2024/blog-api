@@ -15,7 +15,7 @@ router.post("/posts/:postid/comments/create-comment", CommentsController.createC
 router.put("/posts/update-post/:postid", PostsController.updatePost)
 router.put("/posts/:postid/comments/:commentid")
 
-router.delete("/posts/:postid", PostsController.deletePost)
+router.delete("/posts/delete-post/:postid", PostsController.deletePost)
 router.delete("/posts/:postid/comments/:commentid")
 
 module.exports = router;

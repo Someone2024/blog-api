@@ -58,3 +58,13 @@ exports.updatePost = async(req, res) => {
         res.status(404).json({ message: 'blog post not found.' });
     }
 }
+
+exports.deletePost = async(req, res) => {
+    const PostId = req.params.postid
+    try {
+        const post = await Post.findByIdAndRemove(PostId)
+        res.json({message: "Post was successfully removed"})
+    }catch(error) {
+        res.status(404).json({ message: 'blog post not found.' });
+    }
+}

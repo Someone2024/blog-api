@@ -5,9 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose")
 var apiRouter = require('./routes/api');
+const dotenv= require("dotenv").config()
 
 var app = express();
-var mongoDB = "mongodb+srv://user:user@cluster0.4sfyma3.mongodb.net/blog_api?retryWrites=true&w=majority"
+var mongoDB = process.env.MONGODB
 
 main()
 

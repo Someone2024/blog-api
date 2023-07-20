@@ -12,10 +12,10 @@ router.get("/posts/:postid/comments/:commentid", CommentsController.GETComment)
 router.post("/posts/create-post", PostsController.createPost)
 router.post("/posts/:postid/comments/create-comment", CommentsController.createComment)
 
-router.put("/posts/:postid", PostsController.updatePost)
+router.put("/posts/update-post/:postid", PostsController.updatePost)
 router.put("/posts/:postid/comments/:commentid")
 
-router.delete("/posts/:postid")
+router.delete("/posts/:postid", PostsController.deletePost)
 router.delete("/posts/:postid/comments/:commentid")
 
 module.exports = router;

@@ -28,9 +28,33 @@ exports.createPost = async (req, res) => {
         })
 
         await newPost.save();
-        res.json({message: "post was succesfully created with an id of" + newPost._id})
+        res.json({message: "post was successfully created with an id of" + newPost._id})
     }catch(error) {
         console.error('Error creating blog post:', error);
         res.status(500).json({ message: 'Failed to create a new blog post.' });
     }
 };
+
+exports.updatePost = async(req, res) => {
+    const PostId = req.params.postid
+    const {
+        title,
+        content,
+        published
+    } = req.body
+
+    try{
+        const post = await Post.findByIdAndUpdate(
+            PostId,
+            {
+                title,
+                content,
+                date: new Date(),
+                published
+            }
+        )
+        res.json({message: "Post was successfully updated"})
+    }catch(error) {
+        res.status(404).json({ message: 'blog post not found.' });
+    }
+}

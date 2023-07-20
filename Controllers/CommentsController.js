@@ -29,3 +29,13 @@ exports.createComment = async (req, res) => {
         res.status(500).json({ message: 'Failed to create a new comment.' });
     }
 }
+
+exports.deleteComment = async(req, res) => {
+    const CommentId = req.params.commentid
+    try {
+        const comment = await Comment.findByIdAndRemove(CommentId)
+        res.json({message: "comment was successfully removed"})
+    }catch(error) {
+        res.status(404).json({ message: 'comment not found.' });
+    }
+}
